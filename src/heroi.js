@@ -1,49 +1,37 @@
 class Heroi{
-    constructor(nome, idade, classe){
-        this.nome  = nome;
-        this.idade   = idade;
+    constructor(nome, idade, classe, arma){
+        this.nome   = nome;
+        this.idade  = idade;
         this.classe = classe;
+        this.arma   = arma;
     }
 
     atack() {
-       let arma;
-
-       switch(this.classe){
-        case "Guerreiro":
-            arma = "Espada"
-            break
-
-        case "Mago":
-            arma = "Magia"
-            break
-
-        case "Monge":
-            arma = "Artes Marciais"
-            break
-
-        case "Ninja":
-            arma = "Shuriken"
-            break
-
-        default:
-            return "Heroi Invalido!"
-        }
-
-        return `O ${this.classe} de Nome: ${this.nome} causou dano com ${arma}`
+        return `${this.classe} ${this.nome} causou dano com ${this.arma}`
     }
 }
 
-function classHeroi(nome, idade, classe){
-    return classHeroi = new Heroi(nome, idade, classe)
+let characterClass = [
+    new Heroi("Baruka", 29, "Guerreiro", "Espada"),
+    new Heroi("Althea", 23, "Mago", "Magia"),
+    new Heroi("Shen", 52, "Monge", "Artes Marciais"),
+    new Heroi("Akira", 25, "Ninja", "Shuriken"),
+    new Heroi("Ji-Woo", 24, "Monarca das Sombras", "Sombras"),
+    new Heroi("Cha-hae-in", 36, "Guerreiro", "Espada")
+
+];
+
+function classHeroi(index){
+    if(index >= 0 && index < characterClass.length ){
+        const heroi = characterClass[index];
+        console.log(heroi.atack());
+    }else{
+        console.log("Índice inválido. Não há heroi com esse Índice")
+    }
+   
 
 }
 
-//Insira a entrada de dados aqui 
-let nome = ""
-let idade = ""
-let classe = ""
 
-
-const personagem = classHeroi (nome, idade, classe);
-
-console.log(personagem.atack()); 
+classHeroi(4);
+classHeroi(5);
